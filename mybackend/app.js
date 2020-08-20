@@ -12,10 +12,10 @@ app.get('/pacientes', (req, res) => {
     request (url, function(error, response, body) {
         if(!error &&  response.statusCode == 200){
             let parseBody = JSON.parse(body);
-            let result = parseBody[100]['edad'];
+            let result = parseBody.filter(val => val.sexo === 'M')
             res.send(result);
         }
     })
 });
 
-app.listen(port,() => console.log(`App listenin on port ${port}!`));
+app.listen(port,() => console.log(`App listening on port ${port}!`));
